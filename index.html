@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Свинина на Филиппины: первый контейнер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+/* Ведомость: бумага, чернила, кирпичный акцент, линейки вместо карточек */
+:root {
+  --bg: #f5f4f1; --card: #ffffff; --ink: #1f2833; --text: #3a4450; --muted: #707a85; --line: #e0e0dc;
+  --accent: #3d6a9e; --accent-soft: #e2eaf4; --good: #2f5f8f; --good-soft: #e4ecf6; --bad: #b0624a; --bad-soft: #f3e3dc;
+  --hero: #22303f; --hero-ink: #f5f4f1; --hero-muted: #a7b3c0;
+  --s1: #4f7aa8; --s2: #b3bcc6; --s3: #d4a373; --s4: #cdd2d8; --s5: #2f5f8f;
+  --track: #d5d8dc;
+  --serif: Literata, Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181d; --card: #1b2027; --ink: #e9edf2; --text: #c8d0d9; --muted: #8b95a1; --line: #2c333d;
+    --accent: #8fb4de; --accent-soft: #1f2b3a; --good: #9cc3ee; --good-soft: #1c2a3a; --bad: #d98a70; --bad-soft: #3a2620;
+    --hero: #0f1318; --hero-ink: #e9edf2; --hero-muted: #8b95a1;
+    --s1: #7fa3cc; --s2: #4a5560; --s3: #c99a62; --s4: #3a434d; --s5: #9cc3ee;
+    --track: #2c333d;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181d; --card: #1b2027; --ink: #e9edf2; --text: #c8d0d9; --muted: #8b95a1; --line: #2c333d;
+    --accent: #8fb4de; --accent-soft: #1f2b3a; --good: #9cc3ee; --good-soft: #1c2a3a; --bad: #d98a70; --bad-soft: #3a2620;
+    --hero: #0f1318; --hero-ink: #e9edf2; --hero-muted: #8b95a1;
+    --s1: #7fa3cc; --s2: #4a5560; --s3: #c99a62; --s4: #3a434d; --s5: #9cc3ee;
+    --track: #2c333d;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 var(--sans); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+b, strong { color: var(--ink); font-weight: 600; }
+a { color: inherit; }
+.num, .goal-val, .gain-v, .kpi .v, .ctl-val, .cmp-val, .fact-big, .kg-big .v, .pb-bar, td, .legend .vv { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Шапка */
+.hero { padding: 28px 0 0; border-bottom: 3px solid var(--ink); }
+.mast { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+.lede { font: 500 clamp(28px, 4.6vw, 52px)/1.12 var(--serif); color: var(--ink); margin: 28px 0 28px; max-width: 980px; letter-spacing: -.01em; }
+.lede em { font-style: normal; font-family: var(--mono); font-weight: 500; color: var(--accent); white-space: nowrap; border-bottom: 3px solid currentColor; }
+.lede em.t { color: var(--good); }
+.goal { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.goal > div { padding: 18px 0 20px; }
+.goal > div + div { padding-left: 28px; border-left: 1px solid var(--line); }
+@media (max-width: 760px) { .goal { grid-template-columns: 1fr; } .goal > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } }
+.goal > div:first-child { padding-right: 28px; }
+.lbl { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.lbl b { font-size: 15px; letter-spacing: 0; color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 0; margin-top: 6px; font-family: var(--mono); }
+.chip { border: 0; background: none; color: var(--muted); padding: 6px 12px 6px 0; margin-right: 12px; font: 500 13px var(--mono); cursor: pointer; border-bottom: 2px solid transparent; }
+.chip:hover { color: var(--ink); }
+.chip[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.containers { display: flex; flex-wrap: wrap; gap: 3px; margin: 10px 0 14px; min-height: 14px; }
+.ctr { width: 26px; height: 12px; background: repeating-linear-gradient(90deg, var(--accent) 0 3px, color-mix(in srgb, var(--accent) 75%, var(--bg)) 3px 5px); }
+.ctr.part { opacity: .35; }
+.ctr-more { font: 500 12px var(--mono); color: var(--muted); align-self: center; margin-left: 6px; }
+
+/* Полоса выгоды */
+.gain { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--hero); color: var(--hero-ink); cursor: pointer; margin: 0 -16px; }
+.gain > div { padding: 18px 20px 20px; }
+.gain > div + div { border-left: 1px solid #ffffff1f; }
+.gain:hover .gain-v { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+@media (max-width: 760px) { .gain { grid-template-columns: 1fr; } .gain > div + div { border-left: 0; border-top: 1px solid #ffffff1f; } }
+.gain-l { font: 500 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--hero-muted); }
+.gain-v { font-size: clamp(28px, 4vw, 38px); font-weight: 600; color: #a9c8ec; line-height: 1.15; margin: 4px 0 2px; }
+.gain-s { font-size: 13px; color: var(--hero-muted); }
+
+/* Ползунки */
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 26px; background: transparent; margin: 4px 0 0; cursor: pointer; }
+input[type=range]::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(to right, var(--accent) var(--p, 50%), var(--track) var(--p, 50%)); }
+input[type=range]::-moz-range-track { height: 2px; background: var(--track); }
+input[type=range]::-moz-range-progress { height: 2px; background: var(--accent); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: var(--ink); border: 3px solid var(--bg); outline: 1px solid var(--ink); margin-top: -7px; }
+input[type=range]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 0; background: var(--ink); border: 3px solid var(--bg); outline: 1px solid var(--ink); }
+
+/* Разделы: номер, толстая линейка, заголовок с засечками */
+main { counter-reset: sec; padding-bottom: 48px; }
+.sec { margin-top: 48px; border-top: 3px solid var(--ink); padding-top: 14px; }
+.sec > h2 { font: 700 clamp(22px, 2.8vw, 30px)/1.2 var(--serif); color: var(--ink); margin: 0 0 6px; max-width: 860px; }
+.sec > h2::before { counter-increment: sec; content: counter(sec, decimal-leading-zero); display: block; font: 600 12px var(--mono); letter-spacing: .1em; color: var(--accent); margin-bottom: 8px; }
+.sec-lead { margin: 0 0 20px; color: var(--muted); font-size: 15px; max-width: 760px; }
+.card { background: var(--card); border: 1px solid var(--line); padding: 18px 20px; }
+.grid2 { display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; }
+.grid2 > .card + .card { border-left: 0; }
+@media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .grid2 > .card + .card { border-left: 1px solid var(--line); border-top: 0; } }
+.grid2 > *, .facts > *, .goal > *, .kpis > * { min-width: 0; }
+
+/* Выбор продукта и вариантов: вкладки */
+.presets { display: flex; flex-wrap: wrap; gap: 0; margin: -18px -20px 6px; border-bottom: 1px solid var(--line); }
+.preset { flex: 1 1 auto; border: 0; border-right: 1px solid var(--line); background: none; color: var(--ink); padding: 12px 14px; font: 600 14px var(--sans); cursor: pointer; text-align: left; border-bottom: 3px solid transparent; }
+.preset:last-child { border-right: 0; }
+.preset small { display: block; font: 400 12px var(--sans); color: var(--muted); margin-top: 2px; }
+.preset:hover { background: var(--bg); }
+.preset[aria-pressed="true"] { border-bottom-color: var(--accent); background: var(--bg); }
+
+.ctl { padding: 12px 0; border-top: 1px solid var(--line); }
+.presets + .ctl { border-top: 0; }
+.ctl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ctl-name { font-weight: 600; color: var(--ink); font-size: 15px; }
+.ctl-val { font-weight: 600; font-size: 14px; color: var(--accent); white-space: nowrap; }
+.ctl-hint { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.seg { display: flex; margin-top: 8px; border: 1px solid var(--ink); }
+.seg button { flex: 1 1 0; border: 0; border-right: 1px solid var(--ink); background: none; color: var(--ink); padding: 8px 6px; font: 600 14px var(--mono); cursor: pointer; }
+.seg button:last-child { border-right: 0; }
+.seg button small { display: block; font: 400 11px var(--sans); color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg button[aria-pressed="true"] small { color: var(--bg); opacity: .75; }
+
+/* Килограмм */
+.kg-big { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.kg-big .v { font-size: 44px; font-weight: 600; line-height: 1; }
+.kg-big .v.good { color: var(--good); } .kg-big .v.bad { color: var(--bad); }
+.kg-big .u { color: var(--muted); font-family: var(--mono); font-size: 13px; }
+.bar { display: flex; height: 36px; margin: 18px 0 10px; background: var(--track); }
+.bar > div { height: 100%; transition: width .2s; min-width: 0; }
+.bar > div + div { box-shadow: inset 1px 0 0 var(--card); }
+.legend { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+.legend li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px dotted var(--line); }
+.legend li:last-child { border-bottom: 0; font-weight: 600; color: var(--ink); }
+.legend .sw { width: 10px; height: 10px; flex: none; }
+.legend .nm { flex: 1; }
+.legend .vv { white-space: nowrap; font-size: 13px; }
+.legend .vv small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.warn { margin-top: 12px; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--ink); font-size: 14px; display: none; }
+
+/* Показатели: колонки под линейкой */
+.kpis, .cmp-year { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.cmp-year { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
+.kpi { padding: 14px 16px 16px; }
+.kpi + .kpi { border-left: 1px solid var(--line); }
+.kpi:first-child { padding-left: 0; }
+@media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, 1fr); } .kpis .kpi:nth-child(3) { border-left: 0; padding-left: 0; } .kpis .kpi:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 760px) { .cmp-year { grid-template-columns: 1fr; } .cmp-year .kpi { border-left: 0; padding-left: 0; } .cmp-year .kpi + .kpi { border-top: 1px solid var(--line); } }
+.kpi .l { font: 500 11px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.kpi .v { font-size: clamp(20px, 2.6vw, 28px); font-weight: 600; color: var(--ink); line-height: 1.2; margin-top: 6px; }
+.kpi .s { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.kpi.hl .v { color: var(--good); }
+.kpi.hl { background: var(--good-soft); padding-left: 16px !important; }
+
+/* График */
+.chart-wrap { position: relative; }
+svg.chart { width: 100%; height: auto; display: block; touch-action: none; }
+.chart text { fill: var(--muted); font-size: 12px; font-family: var(--mono); }
+@media (max-width: 600px) { .chart text { font-size: 20px; } }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font: 500 13px var(--mono); padding: 6px 10px; white-space: nowrap; transform: translate(-50%, -130%); display: none; }
+
+/* Сравнение каналов */
+.cmp-row { display: grid; grid-template-columns: 220px 1fr 130px; gap: 14px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.cmp-row:first-of-type { border-top: 0; padding-top: 4px; }
+@media (max-width: 640px) { .cmp-row { grid-template-columns: 1fr auto; } .cmp-row .cmp-bar { grid-column: 1 / -1; grid-row: 2; } .cmp-row .cmp-bar > div { font-size: 0; } }
+.cmp-name { font-weight: 600; color: var(--ink); }
+.cmp-name small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.cmp-bar { display: flex; height: 26px; background: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 10%); }
+.cmp-bar > div { height: 100%; transition: width .2s; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font: 600 11px var(--mono); color: #fff; white-space: nowrap; overflow: hidden; text-transform: uppercase; letter-spacing: .04em; }
+.cmp-val { text-align: right; font-weight: 600; font-size: 22px; color: var(--ink); white-space: nowrap; }
+.cmp-val small { display: block; font-size: 12px; font-weight: 600; color: var(--good); }
+.cmp-ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin-top: 6px; border-top: 1px solid var(--ink); }
+.cmp-ctl .ctl { border-top: 0; }
+@media (max-width: 640px) { .cmp-ctl { grid-template-columns: 1fr; } .cmp-ctl .ctl + .ctl { border-top: 1px solid var(--line); } }
+
+/* Полосы в фактах */
+.pb { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+.pb-t { font: 500 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.pb-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px; margin: 0 -6px; }
+.pb-row.click { cursor: pointer; }
+.pb-row.click:hover, .pb-row.click:focus-visible, .pb-row.on { background: var(--accent-soft); outline: none; }
+.pb-l { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.pb-l small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+.pb-bars { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.pb-bar { height: 20px; display: flex; align-items: center; padding: 0 8px; font-size: 12px; font-weight: 600; color: #fff; white-space: nowrap; min-width: max-content; max-width: 100%; transition: width .25s; }
+.pb-leg { display: flex; flex-wrap: wrap; gap: 4px 14px; font: 12px var(--mono); color: var(--muted); }
+.pb-leg i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
+.share { display: flex; height: 28px; font: 600 12px var(--mono); color: #fff; margin: 2px 0 6px; }
+.share div { display: flex; align-items: center; padding: 0 8px; white-space: nowrap; overflow: hidden; }
+.cta { align-self: flex-start; border: 1px solid var(--ink); background: none; color: var(--ink); padding: 10px 14px; font: 600 13px var(--mono); cursor: pointer; letter-spacing: .02em; }
+.cta:hover { background: var(--ink); color: var(--bg); }
+
+/* Пять фактов: газетная сетка с колонками */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
+.fact { padding: 20px 24px 22px 0; display: flex; flex-direction: column; gap: 12px; min-width: 0; border-bottom: 1px solid var(--line); }
+.facts > .fact:nth-child(odd):not(.wide) { padding-right: 24px; border-right: 1px solid var(--line); }
+.facts > .fact:nth-child(even):not(.wide), .facts > .wide + .fact + .fact { padding-left: 24px; }
+.facts > .wide + .fact { padding-left: 0; padding-right: 24px; border-right: 1px solid var(--line); }
+.fact.wide { grid-column: 1 / -1; padding-right: 0; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; } .facts > .fact { padding: 18px 0 !important; border-right: 0 !important; } }
+.fact .src, .fact p { overflow-wrap: anywhere; }
+.fact-n { font: 700 34px/1 var(--serif); color: var(--accent); flex: none; min-width: 26px; }
+.fact-h { display: flex; gap: 12px; align-items: baseline; font: 700 19px/1.25 var(--serif); color: var(--ink); }
+.fact-big { font-size: 28px; font-weight: 600; color: var(--accent); line-height: 1.15; }
+.fact-big small { font: 500 13px var(--sans); color: var(--muted); }
+.fact p { margin: 0; font-size: 14px; }
+.fact .src { font-size: 12px; color: var(--muted); margin-top: auto; }
+.fact .src a { color: var(--muted); }
+
+/* Таблица */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--ink); }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: var(--accent-soft); }
+td.hit { color: var(--good); font-weight: 600; }
+tr.sel td { background: var(--good-soft); font-weight: 600; }
+
+.notes { font-size: 13px; color: var(--muted); }
+.notes ul { padding-left: 18px; margin: 8px 0 0; }
+.notes li { margin: 6px 0; }
+.notes a { color: var(--accent); }
+button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Калькулятор теста */
+.gloss { list-style: none; padding: 14px 0 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 28px; font-size: 13px; color: var(--muted); }
+@media (max-width: 760px) { .gloss { grid-template-columns: 1fr; } }
+.gain-l, .gain-s { color: var(--hero-muted); }
+.tag { display: inline-block; font: 600 10px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 3px 5px; margin-left: 6px; vertical-align: 2px; }
+.chk { margin-top: 18px; padding: 12px 14px; border-left: 3px solid var(--good); background: var(--good-soft); }
+.chk p { margin: 0; font-size: 14px; color: var(--ink); }
+.chk p.lbl { margin-bottom: 6px; }
+.after { margin: 0; font-size: 15px; color: var(--ink); }
+.todo li { font-size: 14px; color: var(--text); }
+.hero .gain-v { overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+ <div class="wrap">
+  <div class="mast"><span>Свинина Россия → Манила · первый контейнер и рост</span><span>Данные ноября 2026 года</span></div>
+  <h1 class="lede">Первый контейнер шкурки: вкладываем <em><span id="invOut">—</span></em>, зарабатываем <em class="t"><span id="firstOut">—</span></em>. После теста — <em class="t"><span id="yearOut">—</span></em> чистыми в год</h1>
+  <div class="goal">
+   <div>
+    <p class="lbl">Прогноз: <b id="scName">—</b></p>
+    <div class="seg" id="sc">
+     <button data-v="real">Реальный<small>осторожные цены и объёмы</small></button>
+     <button data-v="best">Очень хороший<small>всё складывается в нашу пользу</small></button>
+    </div>
+   </div>
+   <div>
+    <p class="lbl">После теста: <b id="cTot">—</b></p>
+    <div class="containers" id="ctrs" aria-hidden="true"></div>
+    <p class="lbl" style="margin:0" id="ctrNote">—</p>
+   </div>
+  </div>
+  <div class="gain" role="button" tabindex="0" data-go="scale">
+   <div><div class="gain-l">Первый контейнер: вложено → вернётся</div><div class="gain-v" id="hBack">—</div><div class="gain-s" id="hBackS">—</div></div>
+   <div><div class="gain-l">Только корпусная шкурка, за год</div><div class="gain-v" id="hRind">—</div><div class="gain-s" id="hRindS">—</div></div>
+   <div><div class="gain-l">Со всеми позициями, за год</div><div class="gain-v" id="hAll">—</div><div class="gain-s" id="hAllS">—</div></div>
+  </div>
+  <ul class="gloss">
+   <li><b>Вложено</b> — предоплата заводу и доставка одного контейнера 27 т.</li>
+   <li><b>Заработок на мясе</b> — выручка минус завод, доставка, таможня и доля партнёров.</li>
+   <li><b>Прибыль</b> — заработок минус представитель в Маниле.</li>
+   <li><b>Чистыми</b> — прибыль минус налог 25%. Вложенные деньги возвращаются сверх этого.</li>
+  </ul>
+ </div>
+</header>
+
+<main class="wrap">
+
+ <section class="sec" id="kg">
+  <h2>Что везём и сколько остаётся с килограмма</h2>
+  <p class="sec-lead">Покупаем у завода с ворот по цене российского рынка, сами везём и продаём импортёру в Маниле с доставкой до порта (CFR). Пошлину, растаможку и холодильник оплачивает импортёр.</p>
+  <div class="grid2">
+   <div class="card">
+    <div class="presets" id="presets"></div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Цена завода, с НДС <span class="tag">по торгам</span></span><span class="ctl-val" id="buyVal">—</span></div>
+     <input type="range" id="buy" min="30" max="300" step="1" aria-label="Цена завода, рублей за кг">
+     <div class="ctl-hint" id="buyHint">—</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Цена продажи импортёру, CFR Манила</span><span class="ctl-val" id="cfrVal">—</span></div>
+     <input type="range" id="cfr" min="0.8" max="3" step="0.01" aria-label="Цена продажи, долларов за кг">
+     <div class="ctl-hint" id="cfrHint">—</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Доставка от завода до Манилы</span><span class="ctl-val" id="frVal">—</span></div>
+     <input type="range" id="fr" min="3000" max="10000" step="250" aria-label="Доставка, долларов за контейнер">
+     <div class="ctl-hint">Рефконтейнер 40 футов, 27 т. Ориентир: ставку нужно запросить у перевозчика.</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Таможня, упаковка, документы</span><span class="ctl-val" id="exVal">—</span></div>
+     <input type="range" id="ex" min="0" max="20" step="1" aria-label="Прочие расходы, рублей за кг">
+     <div class="ctl-hint">Всё, что завод оставил за покупателем. Ориентир: точных сумм пока нет.</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Доля партнёров в Маниле</span><span class="ctl-val" id="prVal">—</span></div>
+     <input type="range" id="pr" min="0" max="5" step="0.5" aria-label="Доля партнёров, процентов выручки">
+     <div class="ctl-hint">Минимальный процент с каждой отгрузки на первом этапе.</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">НДС 10% в цене завода</span><span class="ctl-val" id="vatVal">—</span></div>
+     <div class="seg" id="vat">
+      <button data-v="0">Не возвращаем<small>ИП или упрощёнка</small></button>
+      <button data-v="1">Возвращаем<small>компания на общей системе</small></button>
+     </div>
+    </div>
+   </div>
+   <div class="card">
+    <p class="lbl">С каждого килограмма остаётся</p>
+    <div class="kg-big"><span class="v" id="kgM">—</span><span class="u" id="kgU">—</span></div>
+    <div class="bar" id="kgBar"></div>
+    <ul class="legend" id="kgLeg"></ul>
+    <div class="chk">
+     <p class="lbl">Проверка ценой рынка</p>
+     <p id="chkTxt">—</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="team">
+  <h2>Представитель в Маниле и оборот денег</h2>
+  <p class="sec-lead">Расход на человека на месте не растёт с объёмом. Если свинина идёт вместе с говядиной, этот расход общий на обе линии.</p>
+  <div class="grid2">
+   <div class="card">
+    <div class="ctl" style="border-top:0;padding-top:0">
+     <div class="ctl-head"><span class="ctl-name">Представитель: зарплата, квартира, перелёты</span><span class="ctl-val" id="teamVal">—</span></div>
+     <input type="range" id="team" min="0" max="1500" step="25" aria-label="Расходы на представителя, тысяч рублей в месяц">
+     <div class="ctl-hint">Те же 775 тыс. ₽ в месяц, что и в расчёте по говядине. Поставьте 0, если его оплачивает говядина.</div>
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Когда возвращаются деньги</span><span class="ctl-val" id="payVal">—</span></div>
+     <div class="seg" id="pay">
+      <button data-v="lc">Аккредитив<small>~2 мес.</small></button>
+      <button data-v="arr">По прибытии<small>~3 мес.</small></button>
+      <button data-v="def">Отсрочка<small>~4 мес.</small></button>
+     </div>
+     <div class="ctl-hint">Заводу платим 100% до отгрузки, в пути контейнер около 40 дней.</div>
+    </div>
+   </div>
+   <div class="card">
+    <p class="lbl">Представитель за год</p>
+    <div class="kg-big"><span class="v" id="teamTot">—</span><span class="u" id="teamM">—</span></div>
+    <p class="after" id="teamTxt" style="margin-top:14px">—</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="scale">
+  <h2>Рост после первого контейнера</h2>
+  <p class="sec-lead">Сколько контейнеров в месяц идёт по каждой позиции. Сначала только корпусная шкурка, на неё завод уже согласен. Хребтовая шкурка и щековина добавятся, если завод их даст.</p>
+  <div class="grid2">
+   <div class="card">
+    <div class="ctl" style="border-top:0;padding-top:0">
+     <div class="ctl-head"><span class="ctl-name">Шкурка корпусная</span><span class="ctl-val" id="nRindVal">—</span></div>
+     <input type="range" id="n_rind" min="0" max="10" step="1" aria-label="Контейнеров корпусной шкурки в месяц">
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Шкурка хребтовая</span><span class="ctl-val" id="nBackVal">—</span></div>
+     <input type="range" id="n_back" min="0" max="10" step="1" aria-label="Контейнеров хребтовой шкурки в месяц">
+    </div>
+    <div class="ctl">
+     <div class="ctl-head"><span class="ctl-name">Щековина</span><span class="ctl-val" id="nJowlVal">—</span></div>
+     <input type="range" id="n_jowl" min="0" max="10" step="1" aria-label="Контейнеров щековины в месяц">
+    </div>
+   </div>
+   <div class="card">
+    <p class="lbl">Со всеми позициями, чистыми за год</p>
+    <div class="kg-big"><span class="v" id="allBig">—</span><span class="u" id="allU">—</span></div>
+    <p class="after" id="allTxt" style="margin-top:14px">—</p>
+   </div>
+  </div>
+  <div class="kpis" style="margin-top:20px">
+   <div class="kpi"><div class="l">Поставки за год</div><div class="v" id="yT">—</div><div class="s" id="yTs">—</div></div>
+   <div class="kpi"><div class="l">Деньги в обороте</div><div class="v" id="yWc">—</div><div class="s" id="yWcS">—</div></div>
+   <div class="kpi"><div class="l">Заработок на мясе</div><div class="v" id="yMarg">—</div><div class="s" id="yMargS">—</div></div>
+   <div class="kpi hl"><div class="l">Чистыми за год</div><div class="v" id="yRes">—</div><div class="s" id="yResS">—</div></div>
+  </div>
+  <div class="scroll" style="margin-top:20px">
+   <table>
+    <thead><tr><th>Этап</th><th>Контейнеров</th><th>Тонн в год</th><th>Денег в обороте</th><th>Результат</th></tr></thead>
+    <tbody id="tbl"></tbody>
+   </table>
+  </div>
+ </section>
+
+ <section class="sec">
+  <h2>Что должно сложиться</h2>
+  <div class="notes todo">
+   <ul>
+    <li><b>Цена покупателя.</b> Реальных предложений на шкурку из Манилы пока нет. Нужны цифры от партнёров и производителей чичарона.</li>
+    <li><b>Объём завода.</b> Сколько шкурки в месяц завод готов отпускать и какая цена торгов на дату нашей партии.</li>
+    <li><b>Ограничение импорта.</b> В ноябре 2026 года Филиппины ограничили ввоз свинины на 60 дней. Нужно уточнить код шкурки и платить заводу только после того, как импортёр получил разрешение на ввоз.</li>
+    <li><b>Две компании.</b> Российская компания или ИП покупает у завода, компания в Гонконге продаёт импортёру.</li>
+    <li><b>Документы.</b> Ветеринарный сертификат и маркировка под Филиппины: договориться с заводом, кто что делает.</li>
+    <li><b>Возврат НДС.</b> Возможен, если покупатель у завода работает на общей системе налогов.</li>
+   </ul>
+  </div>
+ </section>
+
+ <section class="sec">
+  <h2>Откуда цифры</h2>
+  <div class="notes">
+   <ul>
+    <li>Условия завода — письмо от 12.11.2026: пробная партия корпусной шкурки, предоплата 100%, цена российского рынка по результатам торгов, отгрузка с ворот завода. Внутренние цены — прайс завода от 16.10.2026: шкурка 50 ₽ за кг с НДС; щековина 240 ₽ в октябре и 91–176 ₽ в феврале–июле 2026, в среднем 126 ₽.</li>
+    <li>Цены продажи: экспортный прайс завода, CFR Манила, октябрь 2026 — корпусная шкурка $1,29, хребтовая $1,03. Щековина — фактические отгрузки 2026 года через трейдеров: $1,77–2,07, в среднем $1,89. Импортная шкурка в 2024 году: $0,90–1,65 за кг (<a href="https://dir.tridge.com/prices/pork-skin/PH">Tridge</a>, разброс широкий).</li>
+    <li>Рынок: импорт шкурки 24 019 т за январь–июль 2026 (<a href="https://porcinews.com/en/philippine-pork-industry-faces-delicate-balancing-act/">porciNews по данным BAI</a>), это около 41 тыс. т в год. Розница Манилы — <a href="https://www.da.gov.ph/wp-content/uploads/2026/11/Daily-Price-Index-November-8-2026.pdf">Минсельхоз Филиппин, 08.11.2026</a>: импортная шкурка ₱220, щековина ₱230.</li>
+    <li>Допущения, не данные: доставка $5 000–6 000 за контейнер, таможня и документы 3–5 ₽ с кг, пошлина для импортёра 15%, объёмы после теста.</li>
+    <li>Представитель и налог 25% — как в <a href="https://daniilglushko.github.io/halal-ph-test/">расчёте по говядине</a>. Оборот: деньги уходят заводу до отгрузки и возвращаются через 2–4 месяца. Курс: $1 = 82,5 ₽ (ЦБ, 11.11.2026) = ₱63,0.</li>
+   </ul>
+  </div>
+ </section>
+
+</main>
+
+<script>
+(() => {
+  const RUB_USD = 82.5, PHP_USD = 63.0, CONT_T = 27, RIND_T = 41000, DUTY = 0.15, TAX = 0.25;
+  const CYCLE = { lc: 2, arr: 3, def: 4 };
+  const RETAIL_SKIN = "импортная замороженная шкурка в рознице Манилы, 8 ноября 2026";
+  const PRODUCTS = [
+    { id: "rind", name: "Шкурка корпусная", sub: "чичарон · первый контейнер", retail: 220, rsrc: RETAIL_SKIN, skin: true },
+    { id: "back", name: "Шкурка хребтовая", sub: "чичарон · просим у завода", retail: 220, rsrc: RETAIL_SKIN, skin: true },
+    { id: "jowl", name: "Щековина", sub: "сисиг · когда дёшево в России", retail: 230, rsrc: "импортная замороженная щековина в рознице Манилы, 8 ноября 2026", skin: false },
+  ];
+  const IDS = PRODUCTS.map(p => p.id);
+  const SC = {
+    real: { name: "реальный", buy: { rind: 50, back: 50, jowl: 126 }, cfr: { rind: 1.2, back: 1.03, jowl: 1.89 }, n: { rind: 2, back: 1, jowl: 1 }, fr: 6000, ex: 5, pr: 1, vat: 0, team: 775, pay: "arr" },
+    best: { name: "очень хороший", buy: { rind: 50, back: 50, jowl: 103 }, cfr: { rind: 1.5, back: 1.29, jowl: 2.07 }, n: { rind: 4, back: 2, jowl: 2 }, fr: 5000, ex: 3, pr: 0.5, vat: 1, team: 775, pay: "lc" },
+  };
+  const HINT_BUY = {
+    skin: "Внутренняя цена завода в октябре 2026 — 50 ₽ с НДС. Завод продаёт по цене российских торгов.",
+    jowl: "В 2026 году щековина стоила в России от 91 ₽ в апреле до 240 ₽ в октябре. Берём, когда цена ниже примерно 130 ₽.",
+  };
+  const HINT_CFR = {
+    rind: "Экспортный прайс завода — $1,29. Импортная шкурка в 2024 году приходила на Филиппины по $0,90–1,65.",
+    back: "Экспортный прайс завода — $1,03. Импортная шкурка в 2024 году приходила на Филиппины по $0,90–1,65.",
+    jowl: "В 2026 году завод продавал щековину на Филиппины через трейдеров по $1,77–2,07, в среднем $1,89.",
+  };
+
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const S = Object.assign({ sc: "real", p: "rind" }, clone(SC.real));
+  const applySc = k => { Object.assign(S, clone(SC[k])); S.sc = k; };
+
+  // Настройки из ссылки
+  try {
+    const h = new URLSearchParams(location.hash.slice(1));
+    if (h.get("sc") in SC) applySc(h.get("sc"));
+    if (IDS.includes(h.get("p"))) S.p = h.get("p");
+    for (const id of IDS) for (const g of ["buy", "cfr", "n"]) { const k = g + "_" + id; if (h.has(k) && !isNaN(+h.get(k))) S[g][id] = +h.get(k); }
+    for (const k of ["fr", "ex", "pr", "vat", "team"]) if (h.has(k) && !isNaN(+h.get(k))) S[k] = +h.get(k);
+    if (h.get("pay") in CYCLE) S.pay = h.get("pay");
+  } catch (e) {}
+
+  const $ = id => document.getElementById(id);
+  const fmt = (x, d = 0) => x.toLocaleString("ru-RU", { minimumFractionDigits: d, maximumFractionDigits: d }).replace("-", "−");
+  const mln = x => { const a = Math.abs(x); return fmt(x / 1e6, a < 1e7 ? 2 : a < 1e8 ? 1 : 0) + " млн ₽"; };
+  const sg = x => (x > 0 ? "+" : "") + mln(x);
+  const prod = id => PRODUCTS.find(x => x.id === id);
+
+  function unit(id) {
+    const buyEff = S.vat ? S.buy[id] / 1.1 : S.buy[id];
+    const frKg = S.fr * RUB_USD / (CONT_T * 1000), rev = S.cfr[id] * RUB_USD, comm = rev * S.pr / 100;
+    const m = rev - comm - buyEff - S.ex - frKg;
+    return { buyEff, frKg, rev, comm, m, perC: m * CONT_T * 1000, inv: (S.buy[id] + S.ex) * CONT_T * 1000 + S.fr * RUB_USD, revC: rev * CONT_T * 1000 };
+  }
+  function year(ids) {
+    let marg = 0, t = 0, n = 0, wc = 0, skinT = 0;
+    for (const id of ids) {
+      const u = unit(id), c = S.n[id];
+      marg += u.perC * c * 12; t += c * 12 * CONT_T; n += c; wc += c * CYCLE[S.pay] * u.inv;
+      if (prod(id).skin) skinT += c * 12 * CONT_T;
+    }
+    const team = S.team * 1000 * 12, pre = marg - team;
+    return { marg, t, n, wc, team, pre, net: pre > 0 ? pre * (1 - TAX) : pre, share: skinT / RIND_T };
+  }
+  const isSc = k => {
+    const a = SC[k];
+    return IDS.every(id => a.buy[id] === S.buy[id] && a.cfr[id] === S.cfr[id] && a.n[id] === S.n[id]) &&
+      ["fr", "ex", "pr", "vat", "team", "pay"].every(x => a[x] === S[x]);
+  };
+
+  const setP = el => el.style.setProperty("--p", ((el.value - el.min) / (el.max - el.min) * 100) + "%");
+  function sync() {
+    $("buy").value = S.buy[S.p]; $("cfr").value = S.cfr[S.p];
+    for (const k of ["fr", "ex", "pr", "team"]) $(k).value = S[k];
+    for (const id of IDS) $("n_" + id).value = S.n[id];
+    document.querySelectorAll("input[type=range]").forEach(setP);
+    render();
+  }
+
+  $("presets").innerHTML = PRODUCTS.map(p => `<button class="preset" data-id="${p.id}">${p.name}<small>${p.sub}</small></button>`).join("");
+  document.querySelectorAll(".preset").forEach(b => b.onclick = () => { S.p = b.dataset.id; sync(); });
+  $("buy").addEventListener("input", e => { S.buy[S.p] = +e.target.value; setP(e.target); render(); });
+  $("cfr").addEventListener("input", e => { S.cfr[S.p] = +e.target.value; setP(e.target); render(); });
+  for (const k of ["fr", "ex", "pr", "team"]) $(k).addEventListener("input", e => { S[k] = +e.target.value; setP(e.target); render(); });
+  for (const id of IDS) $("n_" + id).addEventListener("input", e => { S.n[id] = +e.target.value; setP(e.target); render(); });
+  document.querySelectorAll("#sc button").forEach(b => b.onclick = () => { applySc(b.dataset.v); sync(); });
+  document.querySelectorAll("#vat button").forEach(b => b.onclick = () => { S.vat = +b.dataset.v; render(); });
+  document.querySelectorAll("#pay button").forEach(b => b.onclick = () => { S.pay = b.dataset.v; render(); });
+  const go = id => document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+  document.querySelectorAll("[data-go]").forEach(el => {
+    el.addEventListener("click", () => go(el.dataset.go));
+    el.addEventListener("keydown", e => { if (e.key === "Enter") go(el.dataset.go); });
+  });
+
+  const legend = items => items.map(([c, n, , v]) => `<li><span class="sw" style="background:${c}"></span><span class="nm">${n}</span><span class="vv">${v}</span></li>`).join("");
+  const bar = (items, total) => items.filter(x => x[2] > 0).map(([c, n, v, t]) => `<div style="width:${v / total * 100}%;background:${c}" title="${n}: ${t}"></div>`).join("");
+  const cont = n => n + " " + (n % 10 === 1 && n % 100 !== 11 ? "контейнер" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "контейнера" : "контейнеров");
+
+  function render() {
+    const p = prod(S.p), u = unit(S.p), r1 = unit("rind");
+    const yRind = year(["rind"]), yBack = year(["rind", "back"]), yAll = year(IDS);
+    const cyc = CYCLE[S.pay], scNow = ["real", "best"].find(isSc);
+    document.querySelectorAll(".preset").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === S.p));
+    document.querySelectorAll("#sc button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === scNow));
+    document.querySelectorAll("#vat button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.v === S.vat));
+    document.querySelectorAll("#pay button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === S.pay));
+
+    // Шапка
+    $("scName").textContent = scNow ? SC[scNow].name : "свои настройки";
+    $("invOut").textContent = mln(r1.inv);
+    $("firstOut").textContent = sg(r1.perC);
+    $("yearOut").textContent = sg(yAll.net);
+    $("cTot").textContent = cont(yAll.n) + " в месяц";
+    $("ctrs").innerHTML = Array.from({ length: Math.min(yAll.n, 40) }, () => '<div class="ctr"></div>').join("");
+    $("ctrNote").textContent = `корпусная ${S.n.rind} · хребтовая ${S.n.back} · щековина ${S.n.jowl}`;
+    $("hBack").textContent = mln(r1.inv) + " → " + mln(r1.inv + r1.perC);
+    $("hBackS").textContent = `27 т корпусной шкурки, импортёр заплатит ${mln(r1.revC)}, деньги вернутся через ~${cyc} мес.`;
+    $("hRind").textContent = sg(yRind.net);
+    $("hRindS").textContent = `чистыми · ${cont(yRind.n)} в месяц, ${fmt(yRind.t)} т в год`;
+    $("hAll").textContent = sg(yAll.net);
+    $("hAllS").textContent = `чистыми · ${cont(yAll.n)} в месяц, ${fmt(yAll.t)} т в год, в обороте ${mln(yAll.wc)}`;
+
+    // Килограмм
+    $("buyVal").textContent = fmt(S.buy[S.p]) + " ₽/кг";
+    $("cfrVal").textContent = "$" + fmt(S.cfr[S.p], 2) + " · " + fmt(u.rev) + " ₽";
+    $("frVal").textContent = "$" + fmt(S.fr) + " · " + fmt(u.frKg, 1) + " ₽/кг";
+    $("exVal").textContent = fmt(S.ex) + " ₽/кг";
+    $("prVal").textContent = fmt(S.pr, 1) + "% · " + fmt(u.comm, 1) + " ₽/кг";
+    $("vatVal").textContent = S.vat ? "вернём " + fmt(S.buy[S.p] - u.buyEff, 1) + " ₽/кг" : "остаётся в цене";
+    $("buyHint").textContent = p.skin ? HINT_BUY.skin : HINT_BUY.jowl;
+    $("cfrHint").textContent = HINT_CFR[S.p];
+    $("kgM").textContent = (u.m > 0 ? "+" : "") + fmt(u.m, 1) + " ₽";
+    $("kgM").className = "v " + (u.m > 0 ? "good" : "bad");
+    $("kgU").textContent = `с кг · ${sg(u.perC)} с контейнера 27 т`;
+    const items = [
+      ["var(--s4)", S.vat ? "Заводу, без НДС" : "Заводу, с НДС", u.buyEff, fmt(u.buyEff, 1) + " ₽"],
+      ["var(--s2)", "Доставка до Манилы", u.frKg, fmt(u.frKg, 1) + " ₽"],
+      ["var(--s1)", "Таможня, упаковка, документы", S.ex, fmt(S.ex, 1) + " ₽"],
+      ["var(--s3)", "Партнёрам в Маниле", u.comm, fmt(u.comm, 1) + " ₽"],
+      ["var(--good)", "Остаётся нам", Math.max(0, u.m), fmt(u.m, 1) + " ₽"],
+    ];
+    $("kgBar").innerHTML = bar(items, Math.max(u.rev, u.buyEff + u.frKg + S.ex + u.comm));
+    $("kgLeg").innerHTML = legend(items) + `<li><span class="sw"></span><span class="nm">Цена продажи импортёру</span><span class="vv">${fmt(u.rev, 1)} ₽ · $${fmt(S.cfr[S.p], 2)}</span></li>`;
+    const landed = S.cfr[S.p] * PHP_USD * (1 + DUTY), room = p.retail - landed;
+    const src = p.rsrc[0].toUpperCase() + p.rsrc.slice(1);
+    $("chkTxt").innerHTML = room > 0
+      ? `С пошлиной ${fmt(DUTY * 100)}% импортёр получает килограмм за <b>₱${fmt(landed)}</b>. ${src} — <b>₱${fmt(p.retail)}</b>: на холодильник, развоз и наценку остаётся <b>₱${fmt(room)}</b> (${fmt(room / p.retail * 100)}% цены).`
+      : `С пошлиной импортёр получает килограмм за <b>₱${fmt(landed)}</b> — это выше розницы (₱${fmt(p.retail)}). Снизьте цену продажи.`;
+
+    // Представитель
+    $("teamVal").textContent = fmt(S.team) + " тыс. ₽/мес";
+    $("payVal").textContent = "через ~" + cyc + " мес.";
+    $("teamTot").textContent = mln(yAll.team);
+    $("teamM").textContent = fmt(S.team) + " тыс. ₽ в месяц";
+    $("teamTxt").innerHTML = S.team === 0 ? "Представителя оплачивает говядина, в этом расчёте его нет."
+      : r1.perC > 0 ? `Его окупают <b>${fmt(S.team * 1000 / r1.perC, 1)} контейнера корпусной шкурки в месяц</b>. При выбранных объёмах он стоит <b>${yAll.marg > 0 ? fmt(yAll.team / yAll.marg * 100) : "—"}%</b> заработка на мясе.`
+      : "При такой цене корпусная шкурка не окупает представителя.";
+
+    // Рост
+    $("nRindVal").textContent = cont(S.n.rind) + " в мес. · " + sg(unit("rind").perC) + " каждый";
+    $("nBackVal").textContent = cont(S.n.back) + " в мес. · " + sg(unit("back").perC) + " каждый";
+    $("nJowlVal").textContent = cont(S.n.jowl) + " в мес. · " + sg(unit("jowl").perC) + " каждый";
+    $("allBig").textContent = sg(yAll.net);
+    $("allBig").className = "v " + (yAll.net > 0 ? "good" : "bad");
+    $("allU").textContent = `за год · ${cont(yAll.n)} в месяц`;
+    $("allTxt").innerHTML = `Только корпусная шкурка даёт <b>${sg(yRind.net)}</b>. Хребтовая шкурка и щековина добавляют <b>${sg(yAll.net - yRind.net)}</b> в год.`;
+    $("yT").textContent = fmt(yAll.t) + " т";
+    $("yTs").textContent = `${cont(yAll.n * 12)} · шкурка — ${fmt(yAll.share * 100, 1)}% импорта шкурки`;
+    $("yWc").textContent = mln(yAll.wc);
+    $("yWcS").textContent = `предоплата заводу и доставка, возврат через ~${cyc} мес.`;
+    $("yMarg").textContent = sg(yAll.marg);
+    $("yMargS").textContent = `до представителя (${mln(yAll.team)}) и налога`;
+    $("yRes").textContent = sg(yAll.net);
+    $("yResS").textContent = yAll.pre > 0 ? `прибыль ${sg(yAll.pre)} минус налог 25%` : "убыток, налога нет";
+    const row = (name, n, t, wc, res) => `<tr><td>${name}</td><td>${n}</td><td>${t}</td><td>${wc}</td><td class="hit">${res}</td></tr>`;
+    $("tbl").innerHTML =
+      row("Первый контейнер", "1 пробный", "27", mln(r1.inv), sg(r1.perC) + " с контейнера") +
+      row("Только корпусная шкурка", S.n.rind + " в мес.", fmt(yRind.t), mln(yRind.wc), sg(yRind.net) + " чистыми") +
+      row("+ шкурка хребтовая", yBack.n + " в мес.", fmt(yBack.t), mln(yBack.wc), sg(yBack.net) + " чистыми") +
+      row("+ щековина", yAll.n + " в мес.", fmt(yAll.t), mln(yAll.wc), sg(yAll.net) + " чистыми");
+
+    // Ссылка
+    const h = new URLSearchParams(), b = SC[S.sc];
+    if (S.sc !== "real") h.set("sc", S.sc);
+    if (S.p !== "rind") h.set("p", S.p);
+    for (const id of IDS) for (const g of ["buy", "cfr", "n"]) if (S[g][id] !== b[g][id]) h.set(g + "_" + id, S[g][id]);
+    for (const k of ["fr", "ex", "pr", "vat", "team", "pay"]) if (S[k] !== b[k]) h.set(k, S[k]);
+    history.replaceState(null, "", h.toString() ? "#" + h : location.pathname);
+  }
+
+  sync();
+})();
+</script>
+</body>
+</html>
