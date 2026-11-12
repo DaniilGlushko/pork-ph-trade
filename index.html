@@ -238,7 +238,7 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
 <header class="hero">
  <div class="wrap">
   <div class="mast"><span>Свинина Россия → Манила · первый контейнер и рост</span><span>Данные ноября 2026 года</span></div>
-  <h1 class="lede">Первый контейнер: вкладываем <em><span id="invOut">—</span></em>, зарабатываем <em class="t"><span id="firstOut">—</span></em>. После теста со всеми позициями — <em class="t"><span id="yearOut">—</span></em> чистыми в год</h1>
+  <h1 class="lede">Первый контейнер: вкладываем <em><span id="invOut">—</span></em>, <span id="firstVerb">зарабатываем</span> <em class="t"><span id="firstOut">—</span></em>. После теста с обеими позициями — <em class="t"><span id="yearOut">—</span></em> чистыми в год</h1>
   <div class="goal">
    <div>
     <p class="lbl">Прогноз: <b id="scName">—</b></p>
@@ -255,8 +255,8 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
   </div>
   <div class="gain" role="button" tabindex="0" data-go="scale">
    <div><div class="gain-l">Первый контейнер: вложено → вернётся</div><div class="gain-v" id="hBack">—</div><div class="gain-s" id="hBackS">—</div></div>
-   <div><div class="gain-l">Все позиции, за год</div><div class="gain-v" id="hAll">—</div><div class="gain-s" id="hAllS">—</div></div>
-   <div><div class="gain-l">Если завод даст только корпусную шкурку</div><div class="gain-v" id="hRind">—</div><div class="gain-s" id="hRindS">—</div></div>
+   <div><div class="gain-l">Шкурка и щековина, за год</div><div class="gain-v" id="hAll">—</div><div class="gain-s" id="hAllS">—</div></div>
+   <div><div class="gain-l">Только корпусная шкурка, за год</div><div class="gain-v" id="hRind">—</div><div class="gain-s" id="hRindS">—</div></div>
   </div>
   <ul class="gloss">
    <li><b>Вложено</b> — предоплата заводу и доставка одного контейнера 27 т.</li>
@@ -271,12 +271,12 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
 
  <section class="sec" id="kg">
   <h2>Что везём и сколько остаётся с килограмма</h2>
-  <p class="sec-lead">Покупаем у завода с ворот по цене российского рынка, сами везём и продаём импортёру в Маниле с доставкой до порта (CFR). Пошлину, растаможку и холодильник оплачивает импортёр. Считаем все позиции, которые просим у завода: обе шкурки и щековину.</p>
+  <p class="sec-lead">Покупаем у завода с ворот по цене российского рынка, сами везём и продаём импортёру в Маниле с доставкой до порта (CFR). Пошлину, растаможку и холодильник оплачивает импортёр. Считаем обе позиции, которые завод предлагает: корпусную шкурку и щековину.</p>
   <div class="grid2">
    <div class="card">
     <div class="presets" id="presets"></div>
     <div class="ctl">
-     <div class="ctl-head"><span class="ctl-name">Цена завода, с НДС <span class="tag">по торгам</span></span><span class="ctl-val" id="buyVal">—</span></div>
+     <div class="ctl-head"><span class="ctl-name">Цена завода, без НДС <span class="tag">неделя 12.11</span></span><span class="ctl-val" id="buyVal">—</span></div>
      <input type="range" id="buy" min="30" max="300" step="1" aria-label="Цена завода, рублей за кг">
      <div class="ctl-hint" id="buyHint">—</div>
     </div>
@@ -286,14 +286,14 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
      <div class="ctl-hint" id="cfrHint">—</div>
     </div>
     <div class="ctl">
-     <div class="ctl-head"><span class="ctl-name">Доставка от завода до Манилы</span><span class="ctl-val" id="frVal">—</span></div>
-     <input type="range" id="fr" min="3000" max="10000" step="250" aria-label="Доставка, долларов за контейнер">
-     <div class="ctl-hint">Рефконтейнер 40 футов, 27 т. Ориентир: ставку нужно запросить у перевозчика.</div>
+     <div class="ctl-head"><span class="ctl-name">Доставка: завод → Петербург → Манила</span><span class="ctl-val" id="frVal">—</span></div>
+     <input type="range" id="fr" min="5000" max="15000" step="250" aria-label="Доставка, долларов за контейнер">
+     <div class="ctl-hint">Рефконтейнер 40 футов, 27 т: автовывоз с завода в Петербург (~1 400 км) ≈ $2 000, порт и экспортное оформление ≈ $700, море Петербург → Манила с перевалкой ≈ $6 000–7 000. Оценка по открытым данным, ставку нужно запросить у перевозчика.</div>
     </div>
     <div class="ctl">
-     <div class="ctl-head"><span class="ctl-name">Таможня, упаковка, документы</span><span class="ctl-val" id="exVal">—</span></div>
-     <input type="range" id="ex" min="0" max="20" step="1" aria-label="Прочие расходы, рублей за кг">
-     <div class="ctl-hint">Всё, что завод оставил за покупателем. Ориентир: точных сумм пока нет.</div>
+     <div class="ctl-head"><span class="ctl-name">Упаковка, ветсертификат, банк</span><span class="ctl-val" id="exVal">—</span></div>
+     <input type="range" id="ex" min="0" max="15" step="1" aria-label="Прочие расходы, рублей за кг">
+     <div class="ctl-hint">Расходы сверх доставки, которые завод оставил за покупателем. Ориентир: точных сумм пока нет.</div>
     </div>
     <div class="ctl">
      <div class="ctl-head"><span class="ctl-name">Доля партнёров в Маниле</span><span class="ctl-val" id="prVal">—</span></div>
@@ -301,10 +301,10 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
      <div class="ctl-hint">Минимальный процент с каждой отгрузки на первом этапе.</div>
     </div>
     <div class="ctl">
-     <div class="ctl-head"><span class="ctl-name">НДС 10% в цене завода</span><span class="ctl-val" id="vatVal">—</span></div>
+     <div class="ctl-head"><span class="ctl-name">НДС 10% сверху цены завода</span><span class="ctl-val" id="vatVal">—</span></div>
      <div class="seg" id="vat">
-      <button data-v="0">Не возвращаем<small>ИП или упрощёнка</small></button>
-      <button data-v="1">Возвращаем<small>компания на общей системе</small></button>
+      <button data-v="0">Платим, не возвращаем<small>ИП или упрощёнка</small></button>
+      <button data-v="1">Не платим или возвращаем<small>экспортный договор или общая система</small></button>
      </div>
     </div>
    </div>
@@ -351,16 +351,12 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
 
  <section class="sec" id="scale">
   <h2>Рост после первого контейнера</h2>
-  <p class="sec-lead">Сколько контейнеров в месяц идёт по каждой позиции из тех, что мы просим у завода. Пробную партию завод пока подтвердил только по корпусной шкурке.</p>
+  <p class="sec-lead">Сколько контейнеров в месяц идёт по каждой позиции из тех, что мы просим у завода. Завод предлагает корпусную шкурку и щековину, хребтовую шкурку сейчас не даёт. Пробную партию подтвердил по корпусной шкурке.</p>
   <div class="grid2">
    <div class="card">
     <div class="ctl" style="border-top:0;padding-top:0">
      <div class="ctl-head"><span class="ctl-name">Шкурка корпусная</span><span class="ctl-val" id="nRindVal">—</span></div>
      <input type="range" id="n_rind" min="0" max="10" step="1" aria-label="Контейнеров корпусной шкурки в месяц">
-    </div>
-    <div class="ctl">
-     <div class="ctl-head"><span class="ctl-name">Шкурка хребтовая</span><span class="ctl-val" id="nBackVal">—</span></div>
-     <input type="range" id="n_back" min="0" max="10" step="1" aria-label="Контейнеров хребтовой шкурки в месяц">
     </div>
     <div class="ctl">
      <div class="ctl-head"><span class="ctl-name">Щековина</span><span class="ctl-val" id="nJowlVal">—</span></div>
@@ -392,7 +388,7 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
   <div class="notes todo">
    <ul>
     <li><b>Цена покупателя.</b> Реальных предложений на шкурку из Манилы пока нет. Нужны цифры от партнёров и производителей чичарона.</li>
-    <li><b>Объём завода.</b> Сколько шкурки в месяц завод готов отпускать и какая цена торгов на дату нашей партии. Можно ли сборный контейнер из нескольких позиций.</li>
+    <li><b>Условия завода.</b> Что входит в надбавку 5%, экспортный договор или внутренний (от этого зависит НДС), входит ли в цену упаковка под Филиппины, на какую дату фиксируется цена. Сборный контейнер завод подтвердил.</li>
     <li><b>Ограничение импорта.</b> В ноябре 2026 года Филиппины ограничили ввоз свинины на 60 дней. Нужно уточнить код шкурки и платить заводу только после того, как импортёр получил разрешение на ввоз.</li>
     <li><b>Две компании.</b> Российская компания или ИП покупает у завода, компания в Гонконге продаёт импортёру.</li>
     <li><b>Документы.</b> Ветеринарный сертификат и маркировка под Филиппины: договориться с заводом, кто что делает.</li>
@@ -405,10 +401,10 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
   <h2>Откуда цифры</h2>
   <div class="notes">
    <ul>
-    <li>Условия завода — письмо от 12.11.2026: пробная партия корпусной шкурки, предоплата 100%, цена российского рынка по результатам торгов, отгрузка с ворот завода. Внутренние цены — прайс завода от 16.10.2026: шкурка 50 ₽ за кг с НДС; щековина 240 ₽ в октябре и 91–176 ₽ в феврале–июле 2026, в среднем 126 ₽.</li>
-    <li>Цены продажи: экспортный прайс завода, CFR Манила, октябрь 2026 — корпусная шкурка $1,29, хребтовая $1,03. Щековина — фактические отгрузки 2026 года через трейдеров: $1,77–2,07, в среднем $1,89. Импортная шкурка в 2024 году: $0,90–1,65 за кг (<a href="https://dir.tridge.com/prices/pork-skin/PH">Tridge</a>, разброс широкий).</li>
+    <li>Условия завода — письмо от 12.11.2026: пробная партия корпусной шкурки, предоплата 100%, цена российского рынка по результатам торгов, отгрузка с ворот завода. Цены завода — письмо от 12.11.2026, текущая неделя, с ворот, без НДС: корпусная шкурка $0,80 (66,13 ₽), щековина $2,25 (186 ₽); сверху надбавка 5%. Хребтовую шкурку завод сейчас не предлагает. Для сравнения, внутренние цены завода 16.10.2026: шкурка 50 ₽ с НДС, щековина 240 ₽ с НДС; в феврале–июле 2026 щековина стоила 91–176 ₽ с НДС.</li>
+    <li>Цены продажи: экспортный прайс завода, CFR Манила, октябрь 2026 — корпусная шкурка $1,29. Щековина — фактические отгрузки 2026 года через трейдеров: $1,77–2,07, в среднем $1,89. Импортная шкурка в 2024 году: $0,90–1,65 за кг (<a href="https://dir.tridge.com/prices/pork-skin/PH">Tridge</a>, разброс широкий).</li>
     <li>Рынок: импорт шкурки 24 019 т за январь–июль 2026 (<a href="https://porcinews.com/en/philippine-pork-industry-faces-delicate-balancing-act/">porciNews по данным BAI</a>), это около 41 тыс. т в год. Розница Манилы — <a href="https://www.da.gov.ph/wp-content/uploads/2026/11/Daily-Price-Index-November-8-2026.pdf">Минсельхоз Филиппин, 08.11.2026</a>: импортная шкурка ₱220, щековина ₱230.</li>
-    <li>Допущения, не данные: доставка $5 000–6 000 за контейнер, таможня и документы 3–5 ₽ с кг, пошлина для импортёра 15%, объёмы после теста, состав сборного контейнера — по трети каждой позиции.</li>
+    <li>Доставка через Петербург — оценка, не котировка: $8 000–9 500 за контейнер. Для сверки: в октябрьском прайсе завода корпусная шкурка стоила $1,29 с доставкой в Манилу, а сейчас $0,80 с ворот — разница $0,49 за кг, около $13 000 на контейнер вместе с маржой завода. Открытые ставки: сухой 40-футовый Владивосток — Хошимин $1 150–1 463 (<a href="https://seanews.ru/2026/11/12/ru-stavki-na-kontejnernye-perevozki-vladivostok-hoshimin-nojabr-2026">SeaNews, ноябрь 2026</a>), рефконтейнер дороже на 50–100%. FESCO возит свинину на Филиппины из Петербурга и через Владивосток с перевалкой в Шанхае (<a href="https://seanews.ru/en/2026/04/08/en-fesco-delivers-pork-from-russia-to-philippines">SeaNews, апрель 2026</a>). Остальные допущения: упаковка и документы 2–3 ₽ с кг, пошлина для импортёра 15%, объёмы после теста, состав сборного контейнера — по половине каждой позиции. В очень хорошем прогнозе щековина возвращается к средней цене февраля–июля 2026, 115 ₽ без НДС.</li>
     <li>Представитель и налог 25% — как в <a href="https://daniilglushko.github.io/halal-ph-test/">расчёте по говядине</a>. Оборот: деньги уходят заводу до отгрузки и возвращаются через 2–4 месяца. Курс: $1 = 82,5 ₽ (ЦБ, 11.11.2026) = ₱63,0.</li>
    </ul>
   </div>
@@ -423,30 +419,29 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
   const RETAIL_SKIN = "импортная замороженная шкурка в рознице Манилы, 8 ноября 2026";
   const PRODUCTS = [
     { id: "rind", name: "Шкурка корпусная", sub: "чичарон · первый контейнер", retail: 220, rsrc: RETAIL_SKIN, skin: true },
-    { id: "back", name: "Шкурка хребтовая", sub: "чичарон · просим у завода", retail: 220, rsrc: RETAIL_SKIN, skin: true },
     { id: "jowl", name: "Щековина", sub: "сисиг · когда дёшево в России", retail: 230, rsrc: "импортная замороженная щековина в рознице Манилы, 8 ноября 2026", skin: false },
   ];
   const IDS = PRODUCTS.map(p => p.id);
-  const MIX = { id: "mix", name: "Сборный", sub: "обе шкурки и щековина", retail: 223, rsrc: "средняя розница трёх позиций в Маниле, 8 ноября 2026", skin: false };
+  const MIX = { id: "mix", name: "Сборный", sub: "шкурка и щековина пополам", retail: 225, rsrc: "средняя розница двух позиций в Маниле, 8 ноября 2026", skin: false };
   const TABS = [MIX].concat(PRODUCTS);
-  const FIRST = { mix: "сборный", rind: "корпусная шкурка", back: "хребтовая шкурка", jowl: "щековина" };
-  const HINT_MIX = "Средняя по трём позициям: по трети контейнера каждой. Цены меняются на вкладках позиций.";
+  const FIRST = { mix: "сборный", rind: "корпусная шкурка", jowl: "щековина" };
+  const HINT_MIX = "Средняя по двум позициям: по половине контейнера каждой. Цены меняются на вкладках позиций.";
+  const MARK = 1.05; // надбавка 5% к цене завода
   const SC = {
-    real: { name: "реальный", buy: { rind: 50, back: 50, jowl: 126 }, cfr: { rind: 1.2, back: 1.03, jowl: 1.89 }, n: { rind: 2, back: 1, jowl: 1 }, fr: 6000, ex: 5, pr: 1, vat: 0, team: 775, pay: "arr" },
-    best: { name: "очень хороший", buy: { rind: 50, back: 50, jowl: 103 }, cfr: { rind: 1.5, back: 1.29, jowl: 2.07 }, n: { rind: 4, back: 2, jowl: 2 }, fr: 5000, ex: 3, pr: 0.5, vat: 1, team: 775, pay: "lc" },
+    real: { name: "реальный", buy: { rind: 66.13, jowl: 186 }, cfr: { rind: 1.29, jowl: 1.89 }, n: { rind: 2, jowl: 0 }, fr: 9500, ex: 3, pr: 1, vat: 1, team: 775, pay: "arr" },
+    best: { name: "очень хороший", buy: { rind: 66.13, jowl: 115 }, cfr: { rind: 1.5, jowl: 2.07 }, n: { rind: 4, jowl: 2 }, fr: 8000, ex: 2, pr: 0.5, vat: 1, team: 775, pay: "lc" },
   };
   const HINT_BUY = {
-    skin: "Внутренняя цена завода в октябре 2026 — 50 ₽ с НДС. Завод продаёт по цене российских торгов.",
-    jowl: "В 2026 году щековина стоила в России от 91 ₽ в апреле до 240 ₽ в октябре. Берём, когда цена ниже примерно 130 ₽.",
+    skin: "Завод, неделя 12 ноября 2026: $0,80 за кг (66,13 ₽) с ворот, без НДС. Сверху надбавка 5%. В октябре внутренняя цена была 50 ₽ с НДС.",
+    jowl: "Завод, неделя 12 ноября 2026: $2,25 (186 ₽) без НДС, сверху надбавка 5%. В ноль выходит примерно при 115–125 ₽ без НДС. Весной 2026 щековина в России стоила 91–142 ₽ с НДС.",
   };
   const HINT_CFR = {
-    rind: "Экспортный прайс завода — $1,29. Импортная шкурка в 2024 году приходила на Филиппины по $0,90–1,65.",
-    back: "Экспортный прайс завода — $1,03. Импортная шкурка в 2024 году приходила на Филиппины по $0,90–1,65.",
+    rind: "$1,29 — цена, которую мы уже назвали покупателям в Маниле, и экспортный прайс завода за октябрь. Импортная шкурка в 2024 году приходила на Филиппины по $0,90–1,65.",
     jowl: "В 2026 году завод продавал щековину на Филиппины через трейдеров по $1,77–2,07, в среднем $1,89.",
   };
 
   const clone = o => JSON.parse(JSON.stringify(o));
-  const S = Object.assign({ sc: "real", p: "mix" }, clone(SC.real));
+  const S = Object.assign({ sc: "real", p: "rind" }, clone(SC.real));
   const applySc = k => { Object.assign(S, clone(SC[k])); S.sc = k; };
 
   // Настройки из ссылки
@@ -466,10 +461,10 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
   const prod = id => TABS.find(x => x.id === id);
 
   function unit1(id) {
-    const buyEff = S.vat ? S.buy[id] / 1.1 : S.buy[id];
+    const buyNet = S.buy[id] * MARK, buyEff = S.vat ? buyNet : buyNet * 1.1;
     const frKg = S.fr * RUB_USD / (CONT_T * 1000), rev = S.cfr[id] * RUB_USD, comm = rev * S.pr / 100;
     const m = rev - comm - buyEff - S.ex - frKg;
-    return { buyEff, frKg, rev, comm, m, perC: m * CONT_T * 1000, inv: (S.buy[id] + S.ex) * CONT_T * 1000 + S.fr * RUB_USD, revC: rev * CONT_T * 1000 };
+    return { buyEff, frKg, rev, comm, m, perC: m * CONT_T * 1000, inv: (buyEff + S.ex) * CONT_T * 1000 + S.fr * RUB_USD, buyNet, revC: rev * CONT_T * 1000 };
   }
   function unit(id) {
     if (id !== "mix") return unit1(id);
@@ -526,8 +521,8 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
 
   function render() {
     const p = prod(S.p), u = unit(S.p), r1 = u, mixed = S.p === "mix", um = unit("mix");
-    const bp = mixed ? av("buy") : S.buy[S.p], cp = mixed ? av("cfr") : S.cfr[S.p], mg = id => unit(id).perC * S.n[id] * 12;
-    const yRind = year(["rind"]), yBack = year(["rind", "back"]), yAll = year(IDS);
+    const bp = mixed ? av("buy") : S.buy[S.p], cp = mixed ? av("cfr") : S.cfr[S.p], mg = id => S.n[id] ? sg(unit(id).perC * S.n[id] * 12) : "не везём";
+    const yRind = year(["rind"]), yAll = year(IDS);
     const cyc = CYCLE[S.pay], scNow = ["real", "best"].find(isSc);
     document.querySelectorAll(".preset").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === S.p));
     document.querySelectorAll("#sc button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === scNow));
@@ -537,16 +532,20 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
     // Шапка
     $("scName").textContent = scNow ? SC[scNow].name : "свои настройки";
     $("invOut").textContent = mln(r1.inv);
-    $("firstOut").textContent = sg(r1.perC);
+    $("firstVerb").textContent = r1.perC >= 0 ? "зарабатываем" : "теряем";
+    $("firstOut").textContent = r1.perC >= 0 ? sg(r1.perC) : mln(-r1.perC);
+    $("firstOut").parentElement.classList.toggle("t", r1.perC >= 0);
     $("yearOut").textContent = sg(yAll.net);
+    $("yearOut").parentElement.classList.toggle("t", yAll.net >= 0);
     $("cTot").textContent = cont(yAll.n) + " в месяц";
     $("ctrs").innerHTML = Array.from({ length: Math.min(yAll.n, 40) }, () => '<div class="ctr"></div>').join("");
-    $("ctrNote").textContent = `корпусная ${S.n.rind} · хребтовая ${S.n.back} · щековина ${S.n.jowl}`;
+    $("ctrNote").textContent = `корпусная шкурка ${S.n.rind} · щековина ${S.n.jowl}`;
     $("hBack").textContent = mln(r1.inv) + " → " + mln(r1.inv + r1.perC);
     $("hBackS").textContent = `27 т, ${FIRST[S.p]}: импортёр заплатит ${mln(r1.revC)}, деньги вернутся через ~${cyc} мес.`;
     $("hRind").textContent = sg(yRind.net);
     $("hRindS").textContent = `чистыми за год · ${cont(yRind.n)} в месяц, ${fmt(yRind.t)} т`;
     $("hAll").textContent = sg(yAll.net);
+    for (const [id, x] of [["hBack", r1.perC], ["hRind", yRind.net], ["hAll", yAll.net]]) $(id).style.color = x < 0 ? "#f08a6a" : "";
     $("hAllS").textContent = `чистыми · ${cont(yAll.n)} в месяц, ${fmt(yAll.t)} т в год, в обороте ${mln(yAll.wc)}`;
 
     // Килограмм
@@ -555,16 +554,16 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
     $("frVal").textContent = "$" + fmt(S.fr) + " · " + fmt(u.frKg, 1) + " ₽/кг";
     $("exVal").textContent = fmt(S.ex) + " ₽/кг";
     $("prVal").textContent = fmt(S.pr, 1) + "% · " + fmt(u.comm, 1) + " ₽/кг";
-    $("vatVal").textContent = S.vat ? "вернём " + fmt(bp - u.buyEff, 1) + " ₽/кг" : "остаётся в цене";
+    $("vatVal").textContent = S.vat ? "в цене нет" : "+" + fmt(u.buyEff - u.buyNet, 1) + " ₽/кг";
     $("buyHint").textContent = mixed ? HINT_MIX : p.skin ? HINT_BUY.skin : HINT_BUY.jowl;
     $("cfrHint").textContent = mixed ? HINT_MIX : HINT_CFR[S.p];
     $("kgM").textContent = (u.m > 0 ? "+" : "") + fmt(u.m, 1) + " ₽";
     $("kgM").className = "v " + (u.m > 0 ? "good" : "bad");
     $("kgU").textContent = `с кг · ${sg(u.perC)} с контейнера 27 т`;
     const items = [
-      ["var(--s4)", S.vat ? "Заводу, без НДС" : "Заводу, с НДС", u.buyEff, fmt(u.buyEff, 1) + " ₽"],
-      ["var(--s2)", "Доставка до Манилы", u.frKg, fmt(u.frKg, 1) + " ₽"],
-      ["var(--s1)", "Таможня, упаковка, документы", S.ex, fmt(S.ex, 1) + " ₽"],
+      ["var(--s4)", S.vat ? "Заводу, с надбавкой 5%" : "Заводу, с надбавкой 5% и НДС", u.buyEff, fmt(u.buyEff, 1) + " ₽"],
+      ["var(--s2)", "Доставка через Петербург", u.frKg, fmt(u.frKg, 1) + " ₽"],
+      ["var(--s1)", "Упаковка, ветсертификат, банк", S.ex, fmt(S.ex, 1) + " ₽"],
       ["var(--s3)", "Партнёрам в Маниле", u.comm, fmt(u.comm, 1) + " ₽"],
       ["var(--good)", "Остаётся нам", Math.max(0, u.m), fmt(u.m, 1) + " ₽"],
     ];
@@ -582,17 +581,16 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
     $("teamTot").textContent = mln(yAll.team);
     $("teamM").textContent = fmt(S.team) + " тыс. ₽ в месяц";
     $("teamTxt").innerHTML = S.team === 0 ? "Представителя оплачивает говядина, в этом расчёте его нет."
-      : um.perC > 0 ? `Его окупают <b>${fmt(S.team * 1000 / um.perC, 1)} сборного контейнера в месяц</b>. При выбранных объёмах он стоит <b>${yAll.marg > 0 ? fmt(yAll.team / yAll.marg * 100) : "—"}%</b> заработка на мясе.`
-      : "При таких ценах сборный контейнер не окупает представителя.";
+      : unit("rind").perC > 0 ? `Его окупают <b>${fmt(S.team * 1000 / unit("rind").perC, 1)} контейнера корпусной шкурки в месяц</b>. При выбранных объёмах он стоит <b>${yAll.marg > 0 ? fmt(yAll.team / yAll.marg * 100) : "—"}%</b> заработка на мясе.`
+      : "При таких ценах корпусная шкурка не окупает представителя.";
 
     // Рост
     $("nRindVal").textContent = cont(S.n.rind) + " в мес. · " + sg(unit("rind").perC) + " каждый";
-    $("nBackVal").textContent = cont(S.n.back) + " в мес. · " + sg(unit("back").perC) + " каждый";
     $("nJowlVal").textContent = cont(S.n.jowl) + " в мес. · " + sg(unit("jowl").perC) + " каждый";
     $("allBig").textContent = sg(yAll.net);
     $("allBig").className = "v " + (yAll.net > 0 ? "good" : "bad");
     $("allU").textContent = `за год · ${cont(yAll.n)} в месяц`;
-    $("allTxt").innerHTML = `Заработок на мясе по позициям: корпусная шкурка <b>${sg(mg("rind"))}</b>, хребтовая <b>${sg(mg("back"))}</b>, щековина <b>${sg(mg("jowl"))}</b>.`;
+    $("allTxt").innerHTML = `Заработок на мясе по позициям: корпусная шкурка <b>${mg("rind")}</b>, щековина <b>${mg("jowl")}</b>.`;
     $("yT").textContent = fmt(yAll.t) + " т";
     $("yTs").textContent = `${cont(yAll.n * 12)} · шкурка — ${fmt(yAll.share * 100, 1)}% импорта шкурки`;
     $("yWc").textContent = mln(yAll.wc);
@@ -611,7 +609,7 @@ button:focus-visible, input:focus-visible, [role=button]:focus-visible { outline
     // Ссылка
     const h = new URLSearchParams(), b = SC[S.sc];
     if (S.sc !== "real") h.set("sc", S.sc);
-    if (S.p !== "mix") h.set("p", S.p);
+    if (S.p !== "rind") h.set("p", S.p);
     for (const id of IDS) for (const g of ["buy", "cfr", "n"]) if (S[g][id] !== b[g][id]) h.set(g + "_" + id, S[g][id]);
     for (const k of ["fr", "ex", "pr", "vat", "team", "pay"]) if (S[k] !== b[k]) h.set(k, S[k]);
     history.replaceState(null, "", h.toString() ? "#" + h : location.pathname);
